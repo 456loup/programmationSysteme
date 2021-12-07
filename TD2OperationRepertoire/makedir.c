@@ -39,8 +39,6 @@ int afficherNom(char *nomRepertoire){
     return 0; 
 }
 
-
-
 /*
  *
  * L 'appel récursif ne fonctionne pas 
@@ -53,17 +51,21 @@ void afficherNomRec(char *nomRepertoire){
     struct dirent *entree;  
     int i = 0;
 
+    printf(" \n NOM REP %s   \n " , nomRepertoire); 
     if(rep != NULL){
    	 while((entree = readdir(rep)) != NULL && strcmp("..", entree->d_name ) != 0 && strcmp("." , entree->d_name) != 0){
-    
-       		afficherNomRec(entree->d_name); 
+       		
+		afficherNomRec(entree->d_name);
+
+		printf(" Entree 1  %s " , entree->d_name);  	
        		i++; 
-       		printf(" entree : %d vaut %s  " , i , entree->d_name);  
     	}
-    	closedir(rep);
    }	
 
 }
+
+
+
 
 
 int main(int argc , char **argv){
